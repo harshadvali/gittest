@@ -20,7 +20,7 @@ void main()
 {
 	int ch,length;
 	printf("%d\n",sizeof(struct node));
-	/*while(1)
+	while(1)
 	{
 		//printf("WELLCOME TO SINGLE LINKED LIST:\n\n");
 		printf("1. CREATE A LIST:\n");
@@ -74,10 +74,10 @@ void main()
 
 		}
 	}
-	*/
+	
 }
 
-/*void creat_list()
+void creat_list()
 {
 	struct node* temp;
 	temp=(struct node*)malloc(sizeof(struct node));
@@ -252,5 +252,5 @@ void sumof_nodes()
 		p=p->link;
 	}
 	printf("THE SUM OF THE NODES IS:%d\n",sum);
-}*/
+}
 
