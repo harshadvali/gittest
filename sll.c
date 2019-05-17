@@ -4,7 +4,7 @@ struct node
 {
 	int data;
 	struct node* link;
-}a;
+};
 struct node* root=NULL;
 void creat_list();
 void display_nodes();
@@ -15,11 +15,13 @@ void add_given_pos();
 int reverse_list();
 int delete_node();
 void sumof_nodes();
-
+struct node* middle_node_display(struct node*);
+void delete_middle_node();
 void main()
 {
 	int ch,length;
-	printf("%d\n",sizeof(struct node));
+	struct node* node;
+	//printf("%d\n",sizeof(struct node));
 	while(1)
 	{
 		//printf("WELLCOME TO SINGLE LINKED LIST:\n\n");
@@ -32,9 +34,12 @@ void main()
 		printf("7. REVERSE THE LIST:\n");
 		printf("8. DELETE THE GIVEN NODE:\n");
 		printf("9. sum of the nodes in list:\n");
-		printf("10. EXIT FROM THE PROGRAM:\n");
+		printf("10.display the middle node:\n");
+		printf("11. delete the middle node:\n");
+		printf("12. EXIT FROM THE PROGRAM:\n");
 		printf("-------------------------------\n");
 		printf("ENTER THE YOUR CHOICE:\n");
+		printf("--------------------------------\n");
 		scanf("%d",&ch);
 		
 
@@ -66,8 +71,13 @@ void main()
 				break;
 			case 9: sumof_nodes();
 				break;
+			case 10:node=middle_node_display(root);
+				printf("THE MIDDLE OF THE NODE IS:%d\n",node->data);
+				break;
+			case 11:delete_middle_node();
+				break;
 
-			case 10: exit(1);
+			case 12: exit(1);
 
 			default: printf("PLEASE ENTER THE VALID CHOICE:\n");
 				 break;
@@ -252,5 +262,38 @@ void sumof_nodes()
 		p=p->link;
 	}
 	printf("THE SUM OF THE NODES IS:%d\n",sum);
+}
+
+struct node* middle_node_display(struct node *p)
+{
+	//struct node *p=root;
+	struct node *q=p;
+	while(((p->link)!=NULL) && ((q->link)!=NULL))
+	{
+		p=p->link;
+		if((q->link->link)==NULL)
+		q=q->link;
+		else
+		q=q->link->link;
+	}
+	return p;
+	//printf("THE MIDDLE OF THE NODE IS: %d\n",p->data);
+}
+void delete_middle_node()
+{
+	struct node *p=root;
+	struct node *q=root;
+	struct node *r;
+	while(((p->link)!=NULL) && ((q->link)!=NULL))
+	{
+		r=p;
+		p=p->link;
+		if((q->link->link)==NULL)
+		q=q->link;
+		else
+		q=q->link->link;
+	}
+	r->link=p->link;
+	p->link=NULL;
 }
 
